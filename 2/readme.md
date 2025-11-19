@@ -183,8 +183,13 @@ flowchart TD
 
 ### Результати роботи програми
 
-```
+Запуск програми `clisp hiv.lisp`, виконується функція `(diagnosis-report *patient1*)`
 
+```
+clisp hiv.lisp
+Symptoms: (FEVER ANGINA LYMPH_NODES DIARRHEA NAUSEA VOMITING RETROSTERNAL_PAIN HEADACHE FATIGUE)
+Analyses: (HIGH_LEUKOCYTES)
+HIV Probability: HIGH
 ```
 
 ### Висновок:
