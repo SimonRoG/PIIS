@@ -96,7 +96,7 @@
 
 #### [`hiv.clp`](./hiv.clp)
 
-```lisp
+```clips
 (deftemplate symptom
   (slot name))
 
@@ -411,3 +411,4 @@ HIV Probability: high
 ```
 
 ### Висновок:
+
