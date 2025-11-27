@@ -22,6 +22,7 @@
 from openai import OpenAI
 import json
 
+# Завантаження ключів API з файлу для безпеки
 with open("keys.json") as f:
     keys = json.load(f)
 
@@ -29,6 +30,7 @@ client = OpenAI(api_key=keys["openai_api"])
 model = "gpt-5-nano"
 instructions = "pure python code only, no explanations, comments, markdown code fences, file names, headings, or any other text"
 
+# Генерація коду швидкого сортування
 response = client.responses.create(
     model=model,
     instructions=instructions,
@@ -62,6 +64,7 @@ def quicksort(array):
 ```
 
 ```python
+# Запуск згенерованого коду 
 exec(response.output_text)
 
 import random
@@ -81,6 +84,7 @@ print(arr)
 ```
 
 ```python
+# Генерація коду пошуку простих чисел у масиві
 responsePrime = client.responses.create(
     model=model,
     instructions=instructions,
@@ -131,11 +135,14 @@ print(prime(arr))
 import pandas as pd
 from io import StringIO
 
+# Завантаження датасету про ціни на житло 
 df = pd.read_csv("data/housing_price_dataset.csv")
+
 buffer = StringIO()
 df.info(buf=buffer)
 info = buffer.getvalue()
 
+# Генерація коду аналізу датафрейму: фільтрація рядків, обчислення середнього значення та побудова графіка
 responseDataA = client.responses.create(
     model=model,
     instructions=instructions,
