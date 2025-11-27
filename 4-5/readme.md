@@ -10,11 +10,13 @@
 
 ### Виконання:
 
-#### Створення ключа OpenAI API
+[**_GitHub_**](https://github.com/SimonRoG/PIIS/blob/main/4-5/readme.md)
+
+**Створення ключа OpenAI API**
 
 ![](pics/1APIkey.png)
 
-#### Лістинг: [`aialgorithms.ipynb`](aialgorithms.ipynb)
+**Лістинг:** [`aialgorithms.ipynb`](aialgorithms.ipynb)
 
 ```python
 from openai import OpenAI
@@ -178,7 +180,7 @@ Mean Price for Neighborhood 'Rural': 224096.1260397619
 
 ![](pics/histogram.png)
 
-#### Логи:
+**Логи:**
 
 ![](pics/2LogQuicksort.png)
 
