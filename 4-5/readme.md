@@ -16,7 +16,7 @@
 
 #### Лістинг: [`aialgorithms.ipynb`](aialgorithms.ipynb)
 
-```python 
+```python
 from openai import OpenAI
 import json
 
@@ -125,8 +125,63 @@ print(prime(arr))
 [163, 167, 211, 229, 233, 269, 277, 383, 401, 419, 457, 503, 577, 661, ...
 ```
 
+```python
+import pandas as pd
+from io import StringIO
+
+df = pd.read_csv("data/housing_price_dataset.csv")
+buffer = StringIO()
+df.info(buf=buffer)
+info = buffer.getvalue()
+
+responseDataA = client.responses.create(
+    model=model,
+    instructions=instructions,
+    input=f"Generate python code that analyzes the given dataframe 'df' filters rows on a specific value, and calculates the mean of another column and makes a plot. Use info about dataframe: {info}. Execute it.",
+)
+
+print(responseDataA.output_text)
+exec(responseDataA.output_text)
+```
+
+код згенерований ШІ:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+neighborhoods = df['Neighborhood'].dropna().unique().tolist()
+if not neighborhoods:
+    raise ValueError("No neighborhoods found in df.")
+filter_value = neighborhoods[0]
+
+filtered = df[df['Neighborhood'] == filter_value]
+
+mean_price = filtered['Price'].mean()
+print(f"Mean Price for Neighborhood '{filter_value}': {mean_price}")
+
+plt.figure(figsize=(8,5))
+plt.hist(filtered['Price'], bins=50, color='steelblue', alpha=0.7)
+plt.axvline(mean_price, color='red', linestyle='--', linewidth=2, label=f"Mean = {mean_price:.2f}")
+plt.title(f"Price distribution for Neighborhood: {filter_value}")
+plt.xlabel("Price")
+plt.ylabel("Frequency")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+```
+Mean Price for Neighborhood 'Rural': 224096.1260397619
+```
+
+![](pics/histogram.png)
+
 #### Логи:
 
 ![](pics/2LogQuicksort.png)
 
 ![](pics/3LogPrime.png)
+
+![](pics/4LogData.png)
